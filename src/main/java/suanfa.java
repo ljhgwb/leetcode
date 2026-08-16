@@ -46,9 +46,23 @@ class suanfa1{
                 storeNums.put(nums[i],i);
             }
         }
-        return result;
+        return result;//核心判断哈希表中是否存在需要的那个数
     }
 
 }
-//核心判断哈希表中是否存在需要的那个数
 
+//给数组和一个值val，需要原地移除所有数值等于val的元素，并返回移除后的数组长度
+//不能使用额外数组空间
+class suanfa2{
+    public int num(int[] nums,int val){
+        int sum=0;
+        for(int i=0;i<nums.length;i++){
+            //核心判断指针处的位置是否需要前移，需要迁移几个位置.
+            nums[i-sum]=nums[i];
+            if(nums[i]==val){
+                sum++;
+            }
+        }
+        return nums.length-sum;
+    }
+}
