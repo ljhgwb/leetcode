@@ -66,3 +66,19 @@ class suanfa2{
         return nums.length-sum;
     }
 }
+
+//题目：给整数数组，找连续子数组的最大和，子数组至少有一个元素。
+//示例：[-2,1,-3,4,-1,2,1,-5,4]，最大子数组[4,-1,2,1]和为 6。
+// ---贪心算法，求局部最优解，用当前子数组和+当前数和当前数进行比较，判断是否需要舍弃前面重新开始
+// 每次循环后比较选当前最大值
+ class suanfa3 {
+   public int max(int[] nums){
+       int dangqian=nums[0];
+       int max=nums[0];
+       for(int i=1;i<nums.length;i++){
+           dangqian=Math.max(nums[i],dangqian+nums[i]);
+           max=Math.max(dangqian,max);
+       }
+       return max;
+   }
+ }
