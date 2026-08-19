@@ -121,4 +121,36 @@ class suanfa2{
       //判断当前数组区间左边是否<=集合中最后一个数组区间最右边，若是则重合，取出两个数组最大的有区间，赋值集合中数组，否则不重合直接放到集合中。
  }
 
+ //算法哈希表 + 一次扫描（贪心思想）
+//给定一个未排序的整数数组 nums ，找出数字连续的最长序列（不要求序列元素在原数组中连续）的长度。
+//请你设计并实现时间复杂度为 O (n) 的算法解决此问题。
+//输入：nums = [100,4,200,1,3,2]
+//输出：4
+//解释：最长数字连续序列是 [1, 2, 3, 4]。它的长度为 4。
+class suanfa5 {
+     public int longestConsecutive(int[] nums) {
+         Set<Integer> set = new HashSet<>();
+         //全部存入集合，自动去重
+         for(int num : nums){
+             set.add(num);
+         }
+         int maxLen = 0;
 
+         for(int num : set){
+             // num-1存在，不是起点，跳过
+             if(set.contains(num - 1)){//contains(num‑1) → 筛连续序列的起点
+                 continue;
+             }
+             //找到起点，向后统计连续长度
+             int curNum = num;
+             int curLen = 1;
+             while(set.contains(curNum + 1)){
+                 curNum += 1;
+                 curLen += 1;
+             }
+             maxLen = Math.max(maxLen, curLen);
+         }
+         return maxLen;
+     }//题目强制要求整体时间复杂度 O(n)，HashSet 的 contains()：O(1) 常数时间查询
+     //核心创建一个hashset,把数组元素放入hashset中，开始筛选起点，找到起点进行while循环通过贪心算法找最大连续长度数
+ }
