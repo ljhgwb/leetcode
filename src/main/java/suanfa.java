@@ -151,6 +151,6 @@ class suanfa5 {
              maxLen = Math.max(maxLen, curLen);
          }
          return maxLen;
-     }//题目强制要求整体时间复杂度 O(n)，HashSet 的 contains()：O(1) 常数时间查询
+     }//题目强制要求整体时间复杂度 O(n)，HashSet 的 contains()：O(1) 常数时间查询。
      //核心创建一个hashset,把数组元素放入hashset中，开始筛选起点，找到起点进行while循环通过贪心算法找最大连续长度数
  }
